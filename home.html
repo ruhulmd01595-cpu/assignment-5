@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Issues Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="bg-base-200">
+
+<!-- NAVBAR -->
+
+<div class="navbar bg-white shadow px-10">
+
+<div class="flex-1">
+<h2 class="text-xl font-bold">GitHub Issues Tracker</h2>
+</div>
+
+<div class="flex gap-2">
+<input id="search-text" type="text" placeholder="Search Issue" class="input input-bordered"/>
+
+<button onclick="searchIssue()" class="btn btn-primary">
+Search
+</button>
+</div>
+
+</div>
+
+
+<!-- TAB SECTION -->
+
+<div class="flex justify-center gap-4 mt-6">
+
+<button onclick="filterIssues('all')" class="btn">All</button>
+
+<button onclick="filterIssues('open')" class="btn">Open</button>
+
+<button onclick="filterIssues('closed')" class="btn">Closed</button>
+
+</div>
+
+
+<!-- LOADING -->
+
+<div id="loader" class="text-center text-xl mt-10 hidden">
+Loading...
+</div>
+
+
+<!-- ISSUE CONTAINER -->
+
+<div id="issue-container"
+class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
+
+</div>
+
+
+<script src="script/issues.js"></script>
+
+</body>
+</html>

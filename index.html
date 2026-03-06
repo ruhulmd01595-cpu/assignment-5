@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="tailwind.css">
+</head>
+<body>
+      <!-- <body class="min-h-screen max-w-md bg-base-200 mx-auto"> -->
+    <div class="logo w-[8%] mx-auto mt-10 ">
+        <img src="assets/github-logo.png" alt="">
+<!-- value="01234567890"  -->
+    </div>
+    <div class="text-center mt-4 space-y-2">
+        <h1 class=" text-[#1F2937] text-2xl font-bold">GitHub Issues Tracker</h1>
+        <p class="text-[#64748B]">Sign in to manage your issues</p>
+    </div>
+    <div class="form ">
+        <div class="card bg-base-100 w-full max-w-sm shrink-0 mx-auto shadow rounded" >
+          <div class="card-body ">
+            <fieldset class="fieldset ">
+            <label  class="label text-[#1F2937] font-bold text-[16px] ">Username</label>
+            <input id="user-input" maxlength="5" minlenth="5" type="text" class="input rounded bg-base-200 " value="admin" placeholder="Enter Username" />
+            <label  class="label text-[#1F2937] font-bold text-[16px] pt-4">Password</label>
+            <input id="pin-input" maxlength="8" minlenth="8"  class="input rounded bg-base-200" placeholder="Enter  Password" />
+            <button id="btn-login" class="btn btn-primary mt-4 rounded ">sign In</button>
+           </fieldset>
+          </div>
+          <div class=" text-center ">
+            <h3 class="text-[#1F2937]">OR</h3>
+            <br>
+            <p class="">Demo Credentials:</p>
+            <br>
+            <p class=""><span class=" font-bold">Username:</span> admin</p>
+            <p class=""><span class="font-bold">Password:</span> admin123</p>
+          </div>
+        </div>
+    </div>
+
+    
+    <script src="script/login.js"></script>
+</body>
+</html>

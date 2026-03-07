@@ -4,60 +4,104 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Issues Dashboard</title>
+<title>GitHub Issues Tracker</title>
 
-<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 </head>
 
 <body class="bg-base-200">
 
-<!-- NAVBAR -->
+    <!-- NAVBAR -->
+    <div class="navbar bg-white shadow px-10 justify-between">
+        <div class="flex items-center gap-3">
+            <img class="w-[10%]" src="assets/github-logo.png" alt="">
+          <h2 class="text-xl font-bold">
+          GitHub Issues Tracker
+          </h2>
+        </div>
+        <div class="flex gap-2">
+            <input id="search-text"
+            type="text"
+            placeholder="Search Issue"
+            class="input input-bordered">
 
-<div class="navbar bg-white shadow px-10">
+            <button onclick="searchIssue()"
+            class="btn btn-primary">
+            Search
+            </button>
+        </div>
+    </div>
 
-<div class="flex-1">
-<h2 class="text-xl font-bold">GitHub Issues Tracker</h2>
-</div>
+   <!-- ISSUE COUNT -->
 
-<div class="flex gap-2">
-<input id="search-text" type="text" placeholder="Search Issue" class="input input-bordered"/>
+    <div class="bg-white w-[90%] mx-auto mt-6 p-6 rounded shadow flex gap-4">
 
-<button onclick="searchIssue()" class="btn btn-primary">
-Search
-</button>
-</div>
+        <div class="bg-purple-100 p-3 rounded-full">
+            <img src="assets/Aperture.png" alt="">
+        </div>
 
-</div>
+        <div>
+           <h2 id="issue-count"class="text-xl font-bold">0 Issues</h2>
+           <p class="text-gray-500 text-sm">Track and manage your project issues</p>
+        </div>
+    </div>
 
-
-<!-- TAB SECTION -->
-
-<div class="flex justify-center gap-4 mt-6">
-
-<button onclick="filterIssues('all')" class="btn">All</button>
-
-<button onclick="filterIssues('open')" class="btn">Open</button>
-
-<button onclick="filterIssues('closed')" class="btn">Closed</button>
-
-</div>
-
-
-<!-- LOADING -->
-
-<div id="loader" class="text-center text-xl mt-10 hidden">
-Loading...
-</div>
+    <!-- TABS -->
+    <div class="flex justify-center gap-4 mt-6">
+        <button onclick="filterIssues('all')" class="btn btn-primary">
+          All
+        </button>
+        <button onclick="filterIssues('open')" class="btn">
+          Open
+        </button>
+        <button onclick="filterIssues('closed')" class="btn">
+          Closed
+        </button>
+    </div>
+      
 
 
-<!-- ISSUE CONTAINER -->
+    <!-- LOADING -->
+    <div id="loader" class="text-center mt-10 hidden">
 
-<div id="issue-container"
-class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
+       <span class="loading loading-spinner loading-lg"></span>
 
-</div>
+    </div>
+
+    <!-- ISSUE CONTAINER -->
+
+    <div id="issue-container"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
+    </div>
+
+
+    <!-- MODAL -->
+
+    <dialog id="issueModal" class="modal">
+
+    <div class="modal-box">
+
+      <h3 id="modal-title" class="font-bold text-lg"></h3>
+
+      <p id="modal-desc" class="py-4"></p>
+
+      <p id="modal-status" class=""></p>
+      <p id="modal-author" class="bg-ambe"></p>
+      <p id="modal-priority"></p>
+
+     <div class="modal-action">
+
+        <form method="dialog">
+          <button class="btn">Close</button>
+        </form>
+
+     </div>
+
+    </div>
+
+    </dialog>
 
 
 <script src="script/issues.js"></script>

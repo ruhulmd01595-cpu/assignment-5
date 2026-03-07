@@ -1,64 +1,92 @@
-const api = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+const api =
+"https://phi-lab-server.vercel.app/api/v1/lab/issues";
 
 
-// LOAD ALL ISSUES
+ // LOAD ISSUES
 
 const loadIssues = async () => {
 
-document.getElementById("loader").classList.remove("hidden");
+   document.getElementById("loader")
+   .classList.remove("hidden");
 
-const res = await fetch(api);
+   const res = await fetch(api);
 
-const data = await res.json();
-
-displayIssues(data.data);
-
-document.getElementById("loader").classList.add("hidden");
-
+   const data = await res.json();
+   displayIssues(data.data);
+   document.getElementById("loader")
+   .classList.add("hidden");
 };
-
 loadIssues();
 
 
-
 // DISPLAY ISSUES
-
 const displayIssues = (issues) => {
 
-const container = document.getElementById("issue-container");
+  document.getElementById("issue-count")
+  .innerText = issues.length + " Issues";
 
-container.innerHTML = "";
+   const container =
+   document.getElementById("issue-container");
 
-issues.forEach(issue => {
+   container.innerHTML = "";
 
-const div = document.createElement("div");
+   issues.forEach(issue => {
 
-const borderColor =
-issue.status === "open" ? "green" : "purple";
+   const div = document.createElement("div");
 
-div.style.borderTop = `5px solid ${borderColor}`;
+   const borderColor =
+   issue.status === "open" ? "green" : "purple";
 
-div.classList = "bg-white p-5 rounded shadow";
+   div.style.borderTop =
+   `4px solid ${borderColor}`;
 
-div.innerHTML = `
+   div.className =
+   "bg-white p-5 rounded shadow cursor-pointer";
 
-<h2 class="font-bold text-lg">${issue.title}</h2>
+   div.innerHTML = `
+    <div class="flex justify-between">
+       <span class="text-green-500">●</span>
+       <span class="text-xs px-2 py-1 rounded bg-red-100 text-red-500">
+       ${issue.priority}</span>
+    </div>
+      <h2 class="font-bold mt-2">${issue.title}</h2>
+      <p class="text-sm text-gray-500 mt-2">${issue.description}</p>
+    <div class="flex gap-2 mt-3">
+      <span class="text-xs border px-2 py-1 rounded text-red-500 border-red-300">
+      BUG
+      </span>
+      <span class="text-xs border px-2 py-1 rounded text-yellow-500 border-yellow-300">
+      HELP WANTED
+      </span>
+      </div>
+    <div class="border-t mt-4 pt-3 text-xs text-gray-500">
+       #${issue.id} by ${issue.author}
+       <br>
+       ${issue.createdAt}
+    </div>
+    `;
 
-<p class="text-sm mt-2">${issue.description}</p>
+div.onclick = () => {
 
-<p class="mt-2">Status: ${issue.status}</p>
+  document.getElementById("modal-title")
+  .innerText = issue.title;
 
-<p>Category: ${issue.category}</p>
+  document.getElementById("modal-desc")
+   .innerText = issue.description;
 
-<p>Author: ${issue.author}</p>
+  document.getElementById("modal-status")
+  .innerText = "Status: " + issue.status;
 
-<p>Priority: ${issue.priority}</p>
+  document.getElementById("modal-author")
+  .innerText = "Author: " + issue.author;
 
-<p>Label: ${issue.label}</p>
+  document.getElementById("modal-priority")
+  .innerText = "Priority: " + issue.priority;
 
-<p class="text-sm mt-2">Created: ${issue.createdAt}</p>
+  document.getElementById("issueModal")
+  .showModal();
 
-`;
+};
 
 container.appendChild(div);
 
@@ -68,35 +96,29 @@ container.appendChild(div);
 
 
 
-// FILTER OPEN CLOSED
+// FILTER ISSUES
 
 const filterIssues = async (status) => {
-
 const res = await fetch(api);
-
 const data = await res.json();
-
 let issues = data.data;
 
 if(status !== "all"){
-
-issues = issues.filter(issue => issue.status === status);
-
+issues = issues.filter(
+issue => issue.status === status
+);
 }
-
 displayIssues(issues);
-
 };
-
-
 
 // SEARCH ISSUE
 
 const searchIssue = async () => {
-
-const text = document.getElementById("search-text").value;
-
-const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`);
+const text =
+document.getElementById("search-text").value;
+const res = await fetch(
+`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`
+);
 
 const data = await res.json();
 

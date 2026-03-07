@@ -1,4 +1,4 @@
-console.log('comming')
+// console.log('comming')
   
 
 document.getElementById('btn-login').addEventListener('click', function(){

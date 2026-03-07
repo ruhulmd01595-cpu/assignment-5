@@ -13,7 +13,7 @@ document.getElementById('btn-login').addEventListener('click', function(){
     if(contactuser=='admin' & pin=='admin123'){
         alert('login succes')
          
-        window.location.assign('/home.html')
+        window.location.assign('home.html')
     }
     else{
         alert('login faled')

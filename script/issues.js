@@ -1,16 +1,12 @@
 const api =
-"https://phi-lab-server.vercel.app/api/v1/lab/issues";
+ "https://phi-lab-server.vercel.app/api/v1/lab/issues";
 
 
  // LOAD ISSUES
-
 const loadIssues = async () => {
-
    document.getElementById("loader")
    .classList.remove("hidden");
-
    const res = await fetch(api);
-
    const data = await res.json();
    displayIssues(data.data);
    document.getElementById("loader")
@@ -27,13 +23,10 @@ const displayIssues = (issues) => {
 
    const container =
    document.getElementById("issue-container");
-
    container.innerHTML = "";
-
    issues.forEach(issue => {
 
    const div = document.createElement("div");
-
    const borderColor =
    issue.status === "open" ? "green" : "purple";
    const priorityColor =
@@ -79,8 +72,8 @@ const displayIssues = (issues) => {
  
 // date
 const today = new Date().toLocaleDateString();
-
   document.getElementById("date-text").innerText += today;
+
 
 div.onclick = () => {
   document.getElementById("modal-title")
@@ -105,7 +98,6 @@ container.appendChild(div);
 };
 
 // FILTER ISSUES
-
 const filterIssues = async (status) => {
   const res = await fetch(api);
   const data = await res.json();
@@ -131,7 +123,7 @@ const data = await res.json();
 displayIssues(data.data);
 };
 
-  // Select the filter buttons
+  //  filter buttons
   const filterButtons = document.querySelectorAll(".flex.gap-4 button");
 
   filterButtons.forEach(button => {

@@ -15,27 +15,27 @@
 <body class="bg-base-200">
 
     <!-- NAVBAR -->
-    <div class="navbar bg-white shadow px-10 md:justify-between">
-        <div class="flex items-center gap-3">
-            <img src="assets/github-logo.png" class="w-10 " alt="">
-          <h2 class="text-xl font-bold text-[#1F2937]">
-          GitHub Issues Tracker
-          </h2>
-        </div>
-        <div class="flex gap-2">
-            <input id="search-text"
-            type="text"
-            placeholder= " Search Issue  "
-            class="input input-bordered">
+  <div class="navbar bg-white shadow px-10 md:justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/github-logo.png" class="w-10 " alt="">
+        <h2 class="text-xl font-bold text-[#1F2937]">
+        GitHub Issues Tracker
+        </h2>
+      </div>
+      <div class="flex gap-2">
+          <input id="search-text"
+          type="text"
+          placeholder= " Search Issue  "
+          class="input input-bordered">
 
-            <button onclick="searchIssue()"
-            class="btn btn-primary">
-            + New Issue
-            </button>
-        </div>
+          <button onclick="searchIssue()"
+          class="btn btn-primary">
+          + New Issue
+          </button>
+      </div>
     </div>
 
-    <div class="flex gap-4 mt-6 w-10/12 mx-auto">
+  <div class="flex gap-4 mt-6 w-10/12 mx-auto">
     <button onclick="filterIssues('all')" class="btn btn-primary px-10  ">
       All
     </button>
@@ -45,7 +45,7 @@
     <button onclick="filterIssues('closed')" class="btn px-7">
       Closed
     </button>
-    </div>
+  </div>
 
    
    <!-- ISSUE COUNT -->
@@ -120,8 +120,8 @@
     </div>
   </dialog>
 
-<script src="script/login.js"></script>
-<script src="script/issues.js"></script>
 
+  <script src="script/login.js"></script>
+  <script src="script/issues.js"></script>
 </body>
 </html>

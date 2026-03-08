@@ -8,6 +8,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -16,32 +17,32 @@
     <!-- NAVBAR -->
     <div class="navbar bg-white shadow px-10 md:justify-between">
         <div class="flex items-center gap-3">
-            <img src="assets/github-logo.png" class="w-10" alt="">
-          <h2 class="text-xl font-bold">
+            <img src="assets/github-logo.png" class="w-10 " alt="">
+          <h2 class="text-xl font-bold text-[#1F2937]">
           GitHub Issues Tracker
           </h2>
         </div>
         <div class="flex gap-2">
             <input id="search-text"
             type="text"
-            placeholder="Search Issue"
+            placeholder= " Search Issue  "
             class="input input-bordered">
 
             <button onclick="searchIssue()"
             class="btn btn-primary">
-            Search
+            + New Issue
             </button>
         </div>
     </div>
 
     <div class="flex gap-4 mt-6 w-10/12 mx-auto">
-    <button onclick="filterIssues('all')" class="btn btn-primary">
+    <button onclick="filterIssues('all')" class="btn btn-primary px-10  ">
       All
     </button>
-    <button onclick="filterIssues('open')" class="btn">
+    <button onclick="filterIssues('open')" class="btn px-8">
       Open
     </button>
-    <button onclick="filterIssues('closed')" class="btn">
+    <button onclick="filterIssues('closed')" class="btn px-7">
       Closed
     </button>
     </div>
@@ -49,8 +50,8 @@
    
    <!-- ISSUE COUNT -->
 
-    <div class="bg-white w-[90%] mx-auto mt-6 p-6 rounded shadow flex gap">
-
+    <div class="bg-white w-[90%] mx-auto mt-6 p-6 rounded shadow flex justify-between ">
+      <div class="flex gap-4">
         <div class="bg-purple-100 p-3 rounded-full">
             <img src="assets/Aperture.png" alt="">
         </div>
@@ -58,6 +59,18 @@
            <h2 id="issue-count" class="text-xl font-bold  ">0 Issues</h2>
            <p class="text-gray-500 text-sm">Track and manage your project issues</p>
         </div>
+      </div>
+      <div class="flex gap-4 ">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+          <p class=" font-semibold  text-[14px]">Open</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="  w-3 h-3 bg-purple-500 rounded-full"></span>
+          <p class="font-semibold text-[14px]">Closed</p>
+        </div>
+      </div>
+
     </div>
 
     <!-- LOADING -->
@@ -72,30 +85,40 @@
 
     
     <!-- MODAL -->
-    <dialog id="issueModal" class="modal">
-    <div class="modal-box">
-      <h3 id="modal-title" class="font-bold text-lg"></h3>
+  <dialog id="issueModal" class="modal">
+    <div class="modal-box ">
+      <h3 id="modal-title" class="font-bold text-2xl text-[#1F2937]"></h3>
       <div class="flex gap-2 mt-3">
-    <span class="text-xs border px-2 py-1 rounded text-red-500 border-red-300 flex gap-2"><img src="assets/Vector (8).png" alt="">
-      BUG
-    </span>
-    <span class="text-xs border px-5 py-1 rounded text-yellow-500 border-yellow-300 flex"><img src="assets/Vector (7).png" alt="">
-    HELP WANTED
-    </span>
-  </div>
-      <p id="modal-desc" class="py-4"></p>
-      <p id="modal-status" class=""></p>
-        <p id="modal-author" class=""></p>
-        <p id="modal-priority"></p>
-
-    <div class="modal-action">
-
-        <form method="dialog">
-          <button class="btn btn-primary">Close</button>
-        </form>
-     </div>
+      <p id="modal-status" class=" mb-4 text-xs border px-2 py-1 rounded-2xl text-white bg-green-400 ">
+        
+      </p>
+      <p id="modal-another" class="text-[14px] text-[#64748B]"></p>
+      <p id="date-text" class="text-[14px] text-[#64748B]">• Created At: </p>
+    
     </div>
-    </dialog>
+    <div class="flex gap-3.5">
+       <span class=" w-[60px] rounded-2xl text-xs border px-2 py-1  text-red-500 border-red-200 flex gap-2"><img src="assets/Vector (8).png" alt="">
+        BUG
+        </span>
+         <span class="  text-xs border w-[120px] rounded-2xl px- py-1  text-yellow-500 border-yellow-200 flex  "><img src="assets/Vector (7).png" alt="">
+         HELP WANTED
+         </span>
+    </div>
+        <p id="modal-desc" class="py-4 text-[#64748B]"></p>
+
+      <div class="flex gap-14">
+          <p id="modal-author" class=""></p>
+          <p id="modal-priority" class=""></p>
+      </div>
+        
+
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn btn-primary  ">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 
 <script src="script/login.js"></script>
 <script src="script/issues.js"></script>

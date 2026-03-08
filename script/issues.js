@@ -41,7 +41,6 @@ const displayIssues = (issues) => {
 
    div.className =
    "bg-white p-5 rounded shadow cursor-pointer  mx-auto ";
-
    div.innerHTML = `
     <div class="flex justify-between items-center">
        <span class="flex items-center gap-1 font-semibold">
